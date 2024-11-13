@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown para HTML</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Conversor Markdown para HTML</h1>
+        <div>
+            <textarea id="markdown" placeholder="Digite seu Markdown aqui"></textarea>
+            <button onclick="converterMarkdown()">Converter</button>
+            <button id="download-btn" onclick="baixarHTML()" style="display: none;">Baixar como HTML</button>
+        </div>
+        
+        <div id="resultado">
+            <h2>Resultado em HTML:</h2>
+            <div id="html-output"></div>
+        </div>
+        <div id="error-message" style="color: red; display: none;"></div>
+    </div>
+
+    <!-- CDN do Showdown.js -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script> -->
+    <!-- Seu arquivo .js -->
+    <script src="script.js"></script>
+    <script src="showdown.min.js"></script>
+</body>
+</html>
