@@ -50,13 +50,13 @@ Se você deseja rodar o projeto localmente:
 1. **Clone o repositório**:
 
    ```bash
-   git clone https://github.com/seu-usuario/mdxhtml.git
+   git clone https://github.com/seu-usuario/dmxhtml.git
    ```
 
 2. **Acesse a pasta do projeto**:
 
    ```bash
-   cd mdxhtml
+   cd dmxhtml
    ```
 
 3. **Abra o arquivo `index.html`** em seu navegador. Não é necessário um servidor web para rodar este projeto, basta abrir o arquivo localmente.
