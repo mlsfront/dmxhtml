@@ -50,3 +50,22 @@ function baixarHTML() {
     // Libera o URL do Blob
     URL.revokeObjectURL(url);
 }
+
+// Exibe o botão de voltar ao topo quando o usuário rola a página
+window.onscroll = function() {
+    var backToTopButton = document.getElementById("back-to-top");
+
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        backToTopButton.classList.add("show");
+    } else {
+        backToTopButton.classList.remove("show");
+    }
+};
+
+// Função para rolar suavemente até o topo
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
