@@ -22,6 +22,7 @@ function converterMarkdown() {
 
     // Mostra o botão de download
     document.getElementById('download-btn').style.display = 'block';
+    document.getElementById('view-web-btn').style.display = 'block';
 }
 
 function mostrarErro(mensagem) {
@@ -50,6 +51,77 @@ function baixarHTML() {
     // Libera o URL do Blob
     URL.revokeObjectURL(url);
 }
+
+function visualizarCodigoPagina() {
+    // Pega o conteúdo HTML gerado
+    const htmlContent = document.getElementById('html-output').innerHTML;
+
+    // Cria um novo documento HTML para exibir em uma nova aba
+    const newWindow = window.open('', '_blank');
+    
+    // Escreve o HTML da nova aba
+    newWindow.document.write('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Código HTML Gerado</title></head><body>');
+    
+    // Adiciona um botão para copiar o código
+    newWindow.document.write('<button id="copyButton">Copiar Código</button>');
+    
+    // Exibe o código HTML gerado como texto dentro de um <pre> para manter a formatação
+    newWindow.document.write('<pre id="htmlCode">' + escapeHtml(htmlContent) + '</pre>');
+
+    // Adiciona a função de copiar ao botão
+    newWindow.document.write(`
+        <script>
+            document.getElementById('copyButton').addEventListener('click', function() {
+                // Seleciona o conteúdo do <pre>
+                const htmlCode = document.getElementById('htmlCode');
+                const range = document.createRange();
+                range.selectNodeContents(htmlCode);
+                const selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                
+                // Copia o conteúdo para a área de transferência
+                document.execCommand('copy');
+                
+                // Opcional: Alerta ao usuário que o conteúdo foi copiado
+                alert('Código copiado para a área de transferência!');
+            });
+        </script>
+    `);
+
+    // Fecha o documento para renderizar
+    newWindow.document.write('</body></html>');
+    newWindow.document.close();
+}
+
+// Função auxiliar para escapar caracteres especiais no HTML
+function escapeHtml(unsafe) {
+    return unsafe.replace(/[&<>"']/g, function(m) {
+        return {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        }[m];
+    });
+}
+
+
+// Função para escapar caracteres especiais do HTML
+function escapeHtml(html) {
+    return html.replace(/[&<>"']/g, function(match) {
+        const escape = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;',
+        };
+        return escape[match];
+    });
+}
+
 
 // Exibe o botão de voltar ao topo quando o usuário rola a página
 window.onscroll = function() {

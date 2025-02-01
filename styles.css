@@ -82,6 +82,14 @@ button:hover {
     background-color: #0056b3;
 }
 
+button.btn-yellow {
+    background-color: #ffc107;
+}
+
+button.btn-red {
+    background-color: #dc3545;
+}
+
 /* Estilo do resultado (HTML gerado) */
 #html-output {
     white-space: pre-wrap;

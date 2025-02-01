@@ -17,7 +17,10 @@
             <div id="content-markdown">
                 <textarea id="markdown" placeholder="Digite seu Markdown aqui"></textarea>
                 <button onclick="converterMarkdown()">Converter</button>
-                <button id="download-btn" onclick="baixarHTML()" style="display: none;">Baixar como HTML</button>
+                <!-- Botão para visualizar como página web -->
+                <button class="btn-yellow" id="view-web-btn" onclick="visualizarCodigoPagina()" style="display: none;">Visualizar código da Página Web</button>
+                <!-- Botão para baixar como HTML -->
+                <button class="btn-red" id="download-btn" onclick="baixarHTML()" style="display: none;">Baixar como HTML</button>
             </div>
 
             <!-- Coluna de saída (Resultado) -->
